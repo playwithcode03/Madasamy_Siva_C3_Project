@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.spy;
@@ -65,4 +67,14 @@ class RestaurantTest {Restaurant restaurant;
                 () -> restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //>>>>>>>>>>>>>>>>>>>>>>DISPLAY ORDER VALUE BASED ON ITEMS SELECTED <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void display_order_total_value_for_selected_items(){
+        List<String> selectedItems = new ArrayList<>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Vegetable lasagne");
+        int totalOrderValue = restaurant.getOrderValue(selectedItems);
+        assertEquals(388, totalOrderValue);
+    }
 }
