@@ -77,4 +77,14 @@ class RestaurantTest {Restaurant restaurant;
         int totalOrderValue = restaurant.getOrderValue(selectedItems);
         assertEquals(388, totalOrderValue);
     }
+
+    @Test
+    public void display_order_total_value_for_selected_items_additional_menu_items_added(){
+        restaurant.addToMenu("Cuppocino", 30);
+        List<String> selectedItems = new ArrayList<>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Cuppocino");
+        int totalOrderValue = restaurant.getOrderValue(selectedItems);
+        assertEquals(149, totalOrderValue);
+    }
 }

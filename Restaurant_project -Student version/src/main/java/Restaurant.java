@@ -61,4 +61,12 @@ public class Restaurant {
         return name;
     }
 
+    public int getOrderValue(List<String> selected) {
+        int totalValue = 0;
+        totalValue = this.getMenu().stream()
+                .filter(items -> selected.stream().anyMatch(sItems -> items.getName().equals(sItems)))
+                .mapToInt(finalItems -> finalItems.getPrice()).sum();
+        return totalValue;
+    }
+
 }
